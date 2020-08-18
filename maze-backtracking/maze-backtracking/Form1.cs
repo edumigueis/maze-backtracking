@@ -21,5 +21,10 @@ namespace maze_backtracking
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
