@@ -1,0 +1,10 @@
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\bin\Debug\maze-backtracking.exe.config
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\bin\Debug\maze-backtracking.exe
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\bin\Debug\maze-backtracking.pdb
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze-backtracking.csprojAssemblyReference.cache
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze_backtracking.Form1.resources
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze_backtracking.Properties.Resources.resources
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze-backtracking.csproj.GenerateResource.cache
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze-backtracking.csproj.CoreCompileInputs.cache
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze-backtracking.exe
+C:\Dudu\Projetos e Apps\maze-backtracking\maze-backtracking\maze-backtracking\obj\Debug\maze-backtracking.pdb
