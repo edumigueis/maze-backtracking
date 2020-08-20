@@ -6,9 +6,18 @@ namespace maze_backtracking.Classes
     class LeitorDeArquivo
     {
         private char[,] matriz;
-        private char[,] readFileAsCharTable(string nomeArquivo)
+
+        public LeitorDeArquivo()
+        {}
+
+        public char[,] readFileAsCharTable(string nomeArquivo)
         {
+            if (nomeArquivo.Equals(""))
+                throw new FileNotFoundException("O nome do arquivo não foi fornecido.");
+            if(!Path.GetExtension(nomeArquivo).Equals(".txt"))
+                throw new Exception("O arquivo fornecido não é .txt!");
             StreamReader sr = new StreamReader(nomeArquivo);
+            
             int colunas = int.Parse(sr.ReadLine());
             int linhas = int.Parse(sr.ReadLine());
 

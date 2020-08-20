@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dlgAbrirArquivo = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // button1
@@ -50,6 +51,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Abrir Arquivo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -99,6 +101,11 @@
             this.panel1.Size = new System.Drawing.Size(723, 241);
             this.panel1.TabIndex = 4;
             // 
+            // dlgAbrirArquivo
+            // 
+            this.dlgAbrirArquivo.FileName = "Text File";
+            this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -126,6 +133,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.OpenFileDialog dlgAbrirArquivo;
     }
 }
 
