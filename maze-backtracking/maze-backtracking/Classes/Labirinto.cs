@@ -6,5 +6,9 @@ namespace maze_backtracking.Classes
     {
         private char[,] matriz;
 
+        public Labirinto(char[,] matriz)
+        {
+            this.matriz = matriz;
+        }
     }
 }

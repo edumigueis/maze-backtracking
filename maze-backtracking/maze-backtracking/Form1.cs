@@ -7,6 +7,7 @@ namespace maze_backtracking
 {
     public partial class Form1 : Form
     {
+        private Labirinto labirinto;
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace maze_backtracking
                 LeitorDeArquivo leitor = new LeitorDeArquivo();
                 try
                 {
-                    leitor.readFileAsCharTable(nomeArq);
+                    labirinto = new Labirinto(leitor.readFileAsCharTable(nomeArq));
                 }
                 catch (FileNotFoundException ex)
                 {
