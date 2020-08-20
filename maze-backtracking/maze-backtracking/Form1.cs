@@ -36,7 +36,6 @@ namespace maze_backtracking
                 {
                     MessageBox.Show("O arquivo não é de texto (.txt)!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
     }
