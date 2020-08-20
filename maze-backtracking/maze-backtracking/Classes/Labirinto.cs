@@ -10,5 +10,10 @@ namespace maze_backtracking.Classes
         {
             this.matriz = matriz;
         }
+
+        public void EncontrarCaminhos()
+        {
+
+        }
     }
 }

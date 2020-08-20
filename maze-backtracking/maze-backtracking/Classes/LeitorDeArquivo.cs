@@ -10,7 +10,7 @@ namespace maze_backtracking.Classes
         public LeitorDeArquivo()
         {}
 
-        public char[,] readFileAsCharTable(string nomeArquivo)
+        public char[,] ReadFileAsCharTable(string nomeArquivo)
         {
             if (nomeArquivo.Equals(""))
                 throw new FileNotFoundException("O nome do arquivo não foi fornecido.");

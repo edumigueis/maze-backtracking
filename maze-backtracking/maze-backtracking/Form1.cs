@@ -15,7 +15,7 @@ namespace maze_backtracking
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            labirinto.EncontrarCaminhos();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace maze_backtracking
                 LeitorDeArquivo leitor = new LeitorDeArquivo();
                 try
                 {
-                    labirinto = new Labirinto(leitor.readFileAsCharTable(nomeArq));
+                    labirinto = new Labirinto(leitor.ReadFileAsCharTable(nomeArq));
                 }
                 catch (FileNotFoundException ex)
                 {
