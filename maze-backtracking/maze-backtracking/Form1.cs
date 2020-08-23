@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace maze_backtracking
 {
@@ -27,8 +28,22 @@ namespace maze_backtracking
                 try
                 {
                     labirinto = new Labirinto(leitor.ReadFileAsCharTable(nomeArq));
+                    for(int i = 0; i < labirinto.Matriz.GetLength(0); i++)
+                    {
+                        dgvLab.Rows.Add();
+                        for (int j = 0; j < labirinto.Matriz.GetLength(1); j++)
+                        {
+                            if(labirinto.Matriz[i, j].Equals('#'))
+                            {
+                                Color c = new Color();
+                                c = Color.FromArgb(0, 0, 0);
+                                dgvLab.Rows[i].Cells[j].Style.BackColor = c;
+                            }
+                            
+                        }
+                    }
                 }
-                catch (FileNotFoundException ex)
+                catch (FileNotFoundException)
                 {
                     MessageBox.Show("Escolha um arquivo, por favor.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

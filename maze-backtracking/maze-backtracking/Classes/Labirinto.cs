@@ -11,9 +11,11 @@ namespace maze_backtracking.Classes
             this.matriz = matriz;
         }
 
+        public char[,] Matriz { get => matriz; set => matriz = value; }
+
         public void EncontrarCaminhos()
         {
-
+            
         }
     }
 }

@@ -34,6 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dlgAbrirArquivo = new System.Windows.Forms.OpenFileDialog();
+            this.dgvLab = new System.Windows.Forms.DataGridView();
+            this.dgvRun = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -44,7 +50,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(483, 350);
+            this.button1.Location = new System.Drawing.Point(514, 478);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 39);
@@ -62,7 +68,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(646, 350);
+            this.button2.Location = new System.Drawing.Point(677, 478);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 39);
@@ -95,10 +101,15 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.dgvRun);
+            this.panel1.Controls.Add(this.dgvLab);
             this.panel1.Location = new System.Drawing.Point(31, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(723, 241);
+            this.panel1.Size = new System.Drawing.Size(754, 369);
             this.panel1.TabIndex = 4;
             // 
             // dlgAbrirArquivo
@@ -106,12 +117,40 @@
             this.dlgAbrirArquivo.FileName = "Text File";
             this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
             // 
+            // dgvLab
+            // 
+            this.dgvLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvLab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dgvLab.Location = new System.Drawing.Point(0, 0);
+            this.dgvLab.Name = "dgvLab";
+            this.dgvLab.Size = new System.Drawing.Size(367, 367);
+            this.dgvLab.TabIndex = 0;
+            // 
+            // dgvRun
+            // 
+            this.dgvRun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRun.Location = new System.Drawing.Point(384, 0);
+            this.dgvRun.Name = "dgvRun";
+            this.dgvRun.Size = new System.Drawing.Size(367, 367);
+            this.dgvRun.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Labirinto";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(777, 410);
+            this.ClientSize = new System.Drawing.Size(808, 538);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -121,6 +160,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +176,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.OpenFileDialog dlgAbrirArquivo;
+        private System.Windows.Forms.DataGridView dgvRun;
+        private System.Windows.Forms.DataGridView dgvLab;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 
