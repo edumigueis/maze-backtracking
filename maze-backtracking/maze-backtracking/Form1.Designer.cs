@@ -33,13 +33,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dlgAbrirArquivo = new System.Windows.Forms.OpenFileDialog();
-            this.dgvLab = new System.Windows.Forms.DataGridView();
             this.dgvRun = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvLab = new System.Windows.Forms.DataGridView();
+            this.dlgAbrirArquivo = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -50,7 +49,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(514, 478);
+            this.button1.Location = new System.Drawing.Point(721, 575);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 39);
@@ -68,7 +67,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(677, 478);
+            this.button2.Location = new System.Drawing.Point(884, 575);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 39);
@@ -84,7 +83,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(26, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 29);
+            this.label1.Size = new System.Drawing.Size(189, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Maze Solver";
             // 
@@ -95,7 +94,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(27, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(304, 19);
+            this.label2.Size = new System.Drawing.Size(378, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Escolha um arquivo e clique em iniciar.";
             // 
@@ -109,48 +108,46 @@
             this.panel1.Controls.Add(this.dgvLab);
             this.panel1.Location = new System.Drawing.Point(31, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 369);
+            this.panel1.Size = new System.Drawing.Size(961, 466);
             this.panel1.TabIndex = 4;
-            // 
-            // dlgAbrirArquivo
-            // 
-            this.dlgAbrirArquivo.FileName = "Text File";
-            this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
-            // 
-            // dgvLab
-            // 
-            this.dgvLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvLab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLab.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            this.dgvLab.Location = new System.Drawing.Point(0, 0);
-            this.dgvLab.Name = "dgvLab";
-            this.dgvLab.Size = new System.Drawing.Size(367, 367);
-            this.dgvLab.TabIndex = 0;
             // 
             // dgvRun
             // 
             this.dgvRun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRun.Location = new System.Drawing.Point(384, 0);
+            this.dgvRun.Location = new System.Drawing.Point(495, 0);
             this.dgvRun.Name = "dgvRun";
-            this.dgvRun.Size = new System.Drawing.Size(367, 367);
+            this.dgvRun.RowHeadersWidth = 51;
+            this.dgvRun.Size = new System.Drawing.Size(466, 466);
             this.dgvRun.TabIndex = 1;
             // 
-            // Column1
+            // dgvLab
             // 
-            this.Column1.HeaderText = "Labirinto";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.dgvLab.AllowUserToAddRows = false;
+            this.dgvLab.AllowUserToDeleteRows = false;
+            this.dgvLab.AllowUserToResizeColumns = false;
+            this.dgvLab.AllowUserToResizeRows = false;
+            this.dgvLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvLab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLab.Location = new System.Drawing.Point(0, 0);
+            this.dgvLab.Name = "dgvLab";
+            this.dgvLab.RowHeadersWidth = 51;
+            this.dgvLab.Size = new System.Drawing.Size(466, 466);
+            this.dgvLab.TabIndex = 0;
+            // 
+            // dlgAbrirArquivo
+            // 
+            this.dlgAbrirArquivo.FileName = "Text File";
+            this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(808, 538);
+            this.ClientSize = new System.Drawing.Size(1015, 635);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -158,11 +155,12 @@
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1033, 682);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Maze Solver";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +176,6 @@
         private System.Windows.Forms.OpenFileDialog dlgAbrirArquivo;
         private System.Windows.Forms.DataGridView dgvRun;
         private System.Windows.Forms.DataGridView dgvLab;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 

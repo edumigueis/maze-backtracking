@@ -15,7 +15,7 @@ namespace maze_backtracking.Classes
             if (nomeArquivo.Equals(""))
                 throw new FileNotFoundException("O nome do arquivo não foi fornecido.");
             if(!Path.GetExtension(nomeArquivo).Equals(".txt"))
-                throw new Exception("O arquivo fornecido não é .txt!");
+                throw new ArgumentOutOfRangeException("O arquivo fornecido não é .txt!");
 
             StreamReader sr = new StreamReader(nomeArquivo);
             
