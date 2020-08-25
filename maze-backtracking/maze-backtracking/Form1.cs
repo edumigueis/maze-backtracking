@@ -3,12 +3,14 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace maze_backtracking
 {
     public partial class Form1 : Form
     {
         private Labirinto labirinto;
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +26,19 @@ namespace maze_backtracking
 
         private void button2_Click(object sender, EventArgs e)
         {
-            labirinto.EncontrarCaminhos();
+            do
+            {
+                int[,] atual = labirinto.EncontrarProximaPosicao();
+
+                if (atual[0, 0] == -1)
+                    labirinto.Voltar();
+                else 
+                { 
+                    dgvLab.Rows[atual[0,0]].Cells[atual[0,1]].Style.BackColor = Color.MediumPurple;
+                    Thread.Sleep(500);
+                }
+            }
+            while (!labirinto.EstaNoFim);
         }
 
         private void button1_Click(object sender, EventArgs e)
