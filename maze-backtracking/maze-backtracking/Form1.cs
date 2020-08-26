@@ -33,8 +33,10 @@ namespace maze_backtracking
                 if (atual[0, 0] == -1)
                     labirinto.Voltar();
                 else 
-                { 
-                    dgvLab.Rows[atual[0,0]].Cells[atual[0,1]].Style.BackColor = Color.MediumPurple;
+                {
+                    Color cor = new Color();
+                    cor = Color.FromArgb(80, 0, 200);
+                    dgvLab.Rows[atual[0,0]].Cells[atual[0,1]].Style.BackColor = cor;
                     Thread.Sleep(500);
                 }
             }
