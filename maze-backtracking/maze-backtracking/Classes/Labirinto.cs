@@ -58,8 +58,21 @@ namespace maze_backtracking.Classes
             {
                 if (!Movimentos.EstaVazia)
                 {
-                    novoI = Movimentos.OTopo().Coordenada[0, 0] + Direcoes[d, 1];
-                    novoJ = Movimentos.OTopo().Coordenada[0, 1] + Direcoes[d, 2];
+                    int operacaoI = 0;
+                    int operacaoJ = 0;
+                    for(int i2 = 0; i2 < Direcoes.GetLength(0); i2++)
+                    {
+                        if (Movimentos.OTopo().Direcao == Direcoes[i2,0])
+                        {
+                            operacaoI = Direcoes[i2, 1];
+                            operacaoJ = Direcoes[i2, 2];
+                        }
+                    }
+
+                    int atualI = Movimentos.OTopo().Coordenada[0, 0] + operacaoI;
+                    int atualJ = Movimentos.OTopo().Coordenada[0, 1] + operacaoJ;
+                    novoI = atualI + Direcoes[d, 1];
+                    novoJ = atualJ + Direcoes[d, 2];
                 }
                 else 
                 {
@@ -67,22 +80,57 @@ namespace maze_backtracking.Classes
                     novoJ = Inicio[0, 1] + Direcoes[d, 2];
                 }
 
-                if (Matriz[novoI, novoJ].ToString().Equals(""))
+                if (Matriz[novoI, novoJ].ToString().Equals(" "))
                 {
-                    var movimento = new Movimento(d, new int[,] {{Movimentos.OTopo().Coordenada[0, 0],
-                                                             Movimentos.OTopo().Coordenada[0, 1] }});
-                    Movimentos.Empilhar(movimento);
+                    if (!Movimentos.EstaVazia)
+                    {
+                        int operacaoI = 0;
+                        int operacaoJ = 0;
+                        for (int i2 = 0; i2 < Direcoes.GetLength(0); i2++)
+                        {
+                            if (Movimentos.OTopo().Direcao == Direcoes[i2, 0])
+                            {
+                                operacaoI = Direcoes[i2, 1];
+                                operacaoJ = Direcoes[i2, 2];
+                            }
+                        }
+                        int atualI = Movimentos.OTopo().Coordenada[0, 0] + operacaoI;
+                        int atualJ = Movimentos.OTopo().Coordenada[0, 1] + operacaoJ;
+
+                        if (Movimentos.OTopo().Coordenada[0, 0] == novoI && Movimentos.OTopo().Coordenada[0, 1] == novoJ)
+                            continue;
+
+
+
+                        var movimento = new Movimento(d, new int[,] { { atualI, atualJ } });
+                        Movimentos.Empilhar(movimento);
+                    }
+                    else
+                    {
+                        var movimento = new Movimento(d, new int[,] {{Inicio[0,0], Inicio[0, 1] }});
+                        Movimentos.Empilhar(movimento);
+                    }
                     break;
-                }                 
-            }
+                }
+                else if (d == 7)
+                {
+                    novoI = -1;
+                    novoJ = -1;
+                }
+                else if (Matriz[novoI, novoJ].ToString().Equals("X"))
+                {
+
+                }
+             }
 
             return new int[,] { { novoI, novoJ } };
         }
 
         public void Voltar()
-        {
-            Matriz[Movimentos.OTopo().Coordenada[0, 0],Movimentos.OTopo().Coordenada[0, 1]] = 'X';
+        { 
             var movimento = Movimentos.Desempilhar();
+            Matriz[movimento.Coordenada[0, 0], movimento.Coordenada[0, 1]] = 'X';
+
         }
 
         private void EncontrarInicio()

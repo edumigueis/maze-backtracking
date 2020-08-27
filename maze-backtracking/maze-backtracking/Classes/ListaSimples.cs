@@ -193,12 +193,12 @@ namespace maze_backtracking.Classes
                 }
                 else
                     if (atual == ultimo)
-                {
-                    ultimo = anterior;
-                    ultimo.Prox = null;
-                }
-                else
-                    anterior.Prox = atual.Prox;
+                    {
+                        ultimo = anterior;
+                        ultimo.Prox = null;
+                    }
+                    else
+                        anterior.Prox = atual.Prox;
 
                 quantosNos--;
             }
