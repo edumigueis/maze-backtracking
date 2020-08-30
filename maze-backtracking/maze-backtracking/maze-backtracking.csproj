@@ -50,6 +50,7 @@
     <Compile Include="Classes\Labirinto.cs" />
     <Compile Include="Classes\LeitorDeArquivo.cs" />
     <Compile Include="Classes\ListaSimples.cs" />
+    <Compile Include="Classes\Movimento.cs" />
     <Compile Include="Classes\NoLista.cs" />
     <Compile Include="Classes\PilhaLista.cs" />
     <Compile Include="Form1.cs">

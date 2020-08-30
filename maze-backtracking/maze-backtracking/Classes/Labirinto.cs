@@ -5,23 +5,6 @@ namespace maze_backtracking.Classes
 {
     class Labirinto
     {
-        class Movimento : IComparable<Movimento>
-        {
-            public int Direcao { get; set; }
-
-            public int[,] Coordenada { get; set; }
-
-            public Movimento(int direcao, int[,] coordenada)
-            {
-                Direcao = direcao;
-                Coordenada = coordenada;
-            }
-
-            public int CompareTo(Movimento m)
-            {
-                return 0;
-            }
-        }
 
         public char[,] Matriz { get; set; }
 
@@ -51,7 +34,7 @@ namespace maze_backtracking.Classes
             Movimentos = new PilhaLista<Movimento>();
         }
 
-        public int[,] EncontrarProximaPosicao()
+        public void Resolver()
         {
             int novoI = -1;
             int novoJ = -1;
@@ -63,17 +46,6 @@ namespace maze_backtracking.Classes
             {
                 if (!Movimentos.EstaVazia)
                 {
-                    /*int operacaoI = 0;
-                    int operacaoJ = 0;
-                    for(int i2 = 0; i2 < Direcoes.GetLength(0); i2++)
-                    {
-                        if (Movimentos.OTopo().Direcao == Direcoes[i2,0])
-                        {
-                            operacaoI = Direcoes[i2, 1];
-                            operacaoJ = Direcoes[i2, 2];
-                        }
-                    }*/
-
                     atualI = Movimentos.OTopo().Coordenada[0, 0];
                     atualJ = Movimentos.OTopo().Coordenada[0, 1];
                     novoI = atualI + Direcoes[d, 1];
@@ -103,6 +75,7 @@ namespace maze_backtracking.Classes
                     }
                     /*Nesse método a gnt vai empilhar a posição atual*/
                 }
+                else
                 if (Matriz[novoI, novoJ].ToString().Equals("S"))
                 {
                     SalvarCaminho(novoI, novoJ);
@@ -114,7 +87,6 @@ namespace maze_backtracking.Classes
 
                     if (Movimentos.EstaVazia)
                     {
-                        /*throw new Exception("Labirinto sem solução");*/
                         novoI = -1;
                         novoJ = -1;
                     }
@@ -123,17 +95,10 @@ namespace maze_backtracking.Classes
                         Movimento ant = Movimentos.OTopo();
                         atualI = ant.Coordenada[0,0];
                         atualJ = ant.Coordenada[0, 1];
-                        d = 0;
-                        /*Recomeça o for*/
+                        d = -1;
                     }
                 }
-                /*else if (Matriz[novoI, novoJ].ToString().Equals("X"))
-                {
-
-                }*/
              }
-
-            return new int[,] { { novoI, novoJ } };
         }
 
         public void Voltar()
@@ -149,34 +114,6 @@ namespace maze_backtracking.Classes
             var movimento = new Movimento(direcao, new int[,] { { linha, col } });
             Movimentos.Empilhar(movimento);
             Matriz[linha, col] = 'X';
-
-            /*if (!Movimentos.EstaVazia)
-            {
-                int operacaoI = 0;
-                int operacaoJ = 0;
-                for (int i2 = 0; i2 < Direcoes.GetLength(0); i2++)
-                {
-                    if (Movimentos.OTopo().Direcao == Direcoes[i2, 0])
-                    {
-                        operacaoI = Direcoes[i2, 1];
-                        operacaoJ = Direcoes[i2, 2];
-                    }
-                }
-                int atualI = Movimentos.OTopo().Coordenada[0, 0] + operacaoI;
-                int atualJ = Movimentos.OTopo().Coordenada[0, 1] + operacaoJ;
-
-                if (Movimentos.OTopo().Coordenada[0, 0] == novoI && Movimentos.OTopo().Coordenada[0, 1] == novoJ)
-                    continue;
-
-
-                var movimento = new Movimento(d, new int[,] { { atualI, atualJ } });
-                Movimentos.Empilhar(movimento);
-            }
-            else
-            {
-                var movimento = new Movimento(d, new int[,] { { Inicio[0, 0], Inicio[0, 1] } });
-                Movimentos.Empilhar(movimento);
-            }*/
         }
 
         private void SalvarCaminho(int linha, int col)

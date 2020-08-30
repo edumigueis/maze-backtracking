@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace maze_backtracking
@@ -26,7 +27,7 @@ namespace maze_backtracking
 
         private void button2_Click(object sender, EventArgs e)
         {
-            do
+            /*do
             {
                 int[,] atual = labirinto.EncontrarProximaPosicao();
 
@@ -40,7 +41,12 @@ namespace maze_backtracking
                     Thread.Sleep(500);
                 }
             }
-            while (!labirinto.EstaNoFim);
+            while (!labirinto.EstaNoFim);*/
+
+            List<PilhaLista<Movimento>> lista = new List<PilhaLista<Movimento>>();
+            lista = labirinto.Resolver();
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
