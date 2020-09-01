@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +41,7 @@
             this.dgvRun = new System.Windows.Forms.DataGridView();
             this.dgvLab = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArquivo = new System.Windows.Forms.OpenFileDialog();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).BeginInit();
@@ -113,13 +119,51 @@
             // 
             // dgvRun
             // 
+            this.dgvRun.AllowUserToAddRows = false;
+            this.dgvRun.AllowUserToDeleteRows = false;
+            this.dgvRun.AllowUserToResizeColumns = false;
+            this.dgvRun.AllowUserToResizeRows = false;
             this.dgvRun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRun.Location = new System.Drawing.Point(495, 0);
+            this.dgvRun.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRun.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRun.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.dgvRun.Location = new System.Drawing.Point(730, 0);
+            this.dgvRun.MultiSelect = false;
             this.dgvRun.Name = "dgvRun";
+            this.dgvRun.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRun.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRun.RowHeadersWidth = 51;
-            this.dgvRun.Size = new System.Drawing.Size(466, 466);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvRun.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvRun.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvRun.Size = new System.Drawing.Size(231, 466);
             this.dgvRun.TabIndex = 1;
             // 
             // dgvLab
@@ -134,13 +178,23 @@
             this.dgvLab.Location = new System.Drawing.Point(0, 0);
             this.dgvLab.Name = "dgvLab";
             this.dgvLab.RowHeadersWidth = 51;
-            this.dgvLab.Size = new System.Drawing.Size(466, 466);
+            this.dgvLab.Size = new System.Drawing.Size(689, 466);
             this.dgvLab.TabIndex = 0;
             // 
             // dlgAbrirArquivo
             // 
             this.dlgAbrirArquivo.FileName = "Text File";
             this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column1.HeaderText = "Status";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 230;
             // 
             // Form1
             // 
@@ -176,6 +230,7 @@
         private System.Windows.Forms.OpenFileDialog dlgAbrirArquivo;
         private System.Windows.Forms.DataGridView dgvRun;
         private System.Windows.Forms.DataGridView dgvLab;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 

@@ -5,14 +5,15 @@ namespace maze_backtracking.Classes
 {
     class Labirinto
     {
+        public char[,] MatrizOriginal { get; set; }
 
         public char[,] Matriz { get; set; }
 
         public bool EstaNoFim { get; set; }
 
-        private int[,] Inicio { get; set; }
+        public int[,] Inicio { get; set; }
 
-        private int[,] Fim { get; set; }
+        public int[,] Fim { get; set; }
 
         private int[,] Direcoes { get; } = { { 0, -1, 0 },
                                             { 1, -1, 1 },
@@ -36,14 +37,18 @@ namespace maze_backtracking.Classes
 
         public void Resolver()
         {
-            int novoI = -1;
-            int novoJ = -1;
+            MatrizOriginal = (char[,])Matriz.Clone();
+
+            int novoI;
+            int novoJ;
             int atualJ = 0;
             int atualI = 0;
             bool moveuSe = false;
             
             for (int d = 0; d < Direcoes.GetLength(0); d++)
             {
+                moveuSe = false;
+
                 if (!Movimentos.EstaVazia)
                 {
                     atualI = Movimentos.OTopo().Coordenada[0, 0];
@@ -73,14 +78,13 @@ namespace maze_backtracking.Classes
                         moveuSe = true;
                         d = -1;
                     }
-                    /*Nesse método a gnt vai empilhar a posição atual*/
                 }
                 else
-                if (Matriz[novoI, novoJ].ToString().Equals("S"))
-                {
-                    SalvarCaminho(novoI, novoJ);
-                    /*Nesse método a gnt vai salvar a pilha de movimentos, ou seja o caminho.*/
-                }
+                    if (Matriz[novoI, novoJ].ToString().Equals("S"))
+                    {
+                        SalvarCaminho(novoI, novoJ);
+                        break;
+                    }
                 else if (d == 7 && moveuSe == false)
                 {
                     Movimento atual = Movimentos.Desempilhar();
@@ -99,6 +103,13 @@ namespace maze_backtracking.Classes
                     }
                 }
              }
+        }
+
+        public List<PilhaLista<Movimento>> GetResultado()
+        {
+            Resolver();
+
+            return caminhosEncontrados;
         }
 
         public void Voltar()

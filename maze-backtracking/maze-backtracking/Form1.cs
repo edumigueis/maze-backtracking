@@ -3,8 +3,8 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 
 namespace maze_backtracking
 {
@@ -18,35 +18,47 @@ namespace maze_backtracking
             Color c = new Color();
             c = Color.FromArgb(50, 50, 50);
             dgvLab.BackgroundColor = c;
+            dgvRun.BackgroundColor = c;
             dgvLab.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvRun.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvLab.ColumnHeadersVisible = false;
             dgvLab.RowHeadersVisible = false;
             dgvLab.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvLab.RowsDefaultCellStyle.SelectionBackColor = Color.Transparent;
+            dgvRun.RowsDefaultCellStyle.SelectionBackColor = Color.Transparent;
+            dgvRun.RowHeadersVisible = false;
+            dgvRun.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
+            dgvRun.DefaultCellStyle.BackColor = c;
+            dgvRun.DefaultCellStyle.SelectionBackColor = Color.Transparent;
+            dgvRun.RowsDefaultCellStyle.BackColor = c;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            /*do
+         private void button2_Click(object sender, EventArgs e)
+         {
+            Color cor = new Color();
+            cor = Color.FromArgb(10, 50, 200);
+            var lista = labirinto.GetResultado();
+            int i3 = 1;
+
+            for(int i = 0; i < lista.Count; i++)
             {
-                int[,] atual = labirinto.EncontrarProximaPosicao();
+                var result = lista[i].ToList();
 
-                if (atual[0, 0] == -1)
-                    labirinto.Voltar();
-                else 
+                dgvRun.Rows.Add();
+                dgvRun.Rows[0].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0,0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
+                for (int i2 = result.Count - 1; i2 >= 0 ; i2--)
                 {
-                    Color cor = new Color();
-                    cor = Color.FromArgb(80, 0, 200);
-                    dgvLab.Rows[atual[0,0]].Cells[atual[0,1]].Style.BackColor = cor;
-                    Thread.Sleep(500);
+
+                    dgvLab.Rows[result[i2].Coordenada[0, 0]].Cells[result[i2].Coordenada[0, 1]].Style.BackColor = cor;
+                    dgvRun.Rows.Add();
+                    dgvRun.Rows[i3].Cells[0].Value = "Passando por (" + (result[i2].Coordenada[0, 0] - 1) + "," + (result[i2].Coordenada[0, 1] - 1 )+ ")";
+                    i3++;
+                    Application.DoEvents();
+                    Thread.Sleep(300);
                 }
+                dgvRun.Rows.Add();
+                dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
             }
-            while (!labirinto.EstaNoFim);*/
-
-            List<PilhaLista<Movimento>> lista = new List<PilhaLista<Movimento>>();
-            lista = labirinto.Resolver();
-
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
