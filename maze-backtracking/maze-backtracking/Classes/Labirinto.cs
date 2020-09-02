@@ -5,15 +5,17 @@ namespace maze_backtracking.Classes
 {
     class Labirinto
     {
-        public char[,] MatrizOriginal { get; set; }
-
-        public char[,] Matriz { get; set; }
-
-        public bool EstaNoFim { get; set; }
-
         public int[,] Inicio { get; set; }
 
         public int[,] Fim { get; set; }
+
+        public char[,] Matriz { get; set; }
+
+        private char[,] MatrizOriginal { get; set; }
+
+        private bool todosOsCaminhosEncontrados = false;
+
+        private bool EstaNoFim { get; set; }
 
         private int[,] Direcoes { get; } = { { 0, -1, 0 },
                                             { 1, -1, 1 },
@@ -25,20 +27,20 @@ namespace maze_backtracking.Classes
                                             { 7, -1, -1 } };
 
         private PilhaLista<Movimento> Movimentos { get; set; }
-        private List<PilhaLista<Movimento>> caminhosEncontrados = new List<PilhaLista<Movimento>>();
+        private List<PilhaLista<Movimento>> CaminhosEncontrados { get; set; }
 
         public Labirinto(char[,] matriz)
         {
             AdicionarParedes(matriz);
             EncontrarInicio();
             EncontrarFim();
-            Movimentos = new PilhaLista<Movimento>();
+            MatrizOriginal = (char[,])Matriz.Clone();
+            CaminhosEncontrados = new List<PilhaLista<Movimento>>();
         }
 
-        public void Resolver()
+        private void Resolver()
         {
-            MatrizOriginal = (char[,])Matriz.Clone();
-
+            Movimentos = new PilhaLista<Movimento>();
             int novoI;
             int novoJ;
             int atualJ = 0;
@@ -89,33 +91,39 @@ namespace maze_backtracking.Classes
                 {
                     Movimento atual = Movimentos.Desempilhar();
 
-                    if (Movimentos.EstaVazia)
-                    {
-                        novoI = -1;
-                        novoJ = -1;
-                    }
-                    else
+                    if (!Movimentos.EstaVazia)
                     {
                         Movimento ant = Movimentos.OTopo();
-                        atualI = ant.Coordenada[0,0];
+                        atualI = ant.Coordenada[0, 0];
                         atualJ = ant.Coordenada[0, 1];
                         d = -1;
                     }
+                    else
+                        todosOsCaminhosEncontrados = true;
                 }
              }
         }
 
-        public List<PilhaLista<Movimento>> GetResultado()
+        private void FecharCaminhoEncontrado()
         {
-            Resolver();
+            int i = Movimentos.OTopo().Coordenada[0, 0];
+            int j = Movimentos.OTopo().Coordenada[0, 1];
 
-            return caminhosEncontrados;
+            Matriz = (char[,])MatrizOriginal.Clone();
+
+            Matriz[i,j] = 'O';
         }
 
-        public void Voltar()
-        { 
-            var movimento = Movimentos.Desempilhar();
-            Matriz[movimento.Coordenada[0, 0], movimento.Coordenada[0, 1]] = 'X';
+        public List<PilhaLista<Movimento>> GetResultado()
+        {
+            do
+            {
+                Resolver();
+                FecharCaminhoEncontrado();
+            }
+            while (!todosOsCaminhosEncontrados);
+
+            return CaminhosEncontrados;
         }
 
         private void Mover(int linhaProx, int colProx, ref int linha, ref int col, int direcao)
@@ -130,7 +138,7 @@ namespace maze_backtracking.Classes
         private void SalvarCaminho(int linha, int col)
         {
             Movimentos.Empilhar(new Movimento(0, new int[,] { { linha, col } }));
-            caminhosEncontrados.Add(Movimentos);
+            CaminhosEncontrados.Add(Movimentos);
             Movimentos.Desempilhar();
         }
         private void EncontrarInicio()

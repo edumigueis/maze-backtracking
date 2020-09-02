@@ -33,37 +33,48 @@ namespace maze_backtracking
             dgvRun.RowsDefaultCellStyle.BackColor = c;
         }
 
-         private void button2_Click(object sender, EventArgs e)
-         {
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
+            button1.Enabled = false;
+            dgvRun.Rows.Clear();
+            dgvRun.Refresh();
             Color cor = new Color();
             cor = Color.FromArgb(10, 50, 200);
             var lista = labirinto.GetResultado();
             int i3 = 1;
-
-            for(int i = 0; i < lista.Count; i++)
+            if (lista.Count != 0)
             {
-                var result = lista[i].ToList();
-
-                dgvRun.Rows.Add();
-                dgvRun.Rows[0].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0,0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
-                for (int i2 = result.Count - 1; i2 >= 0 ; i2--)
+                for (int i = 0; i < lista.Count; i++)
                 {
+                    var result = lista[i].ToList();
 
-                    dgvLab.Rows[result[i2].Coordenada[0, 0]].Cells[result[i2].Coordenada[0, 1]].Style.BackColor = cor;
                     dgvRun.Rows.Add();
-                    dgvRun.Rows[i3].Cells[0].Value = "Passando por (" + (result[i2].Coordenada[0, 0] - 1) + "," + (result[i2].Coordenada[0, 1] - 1 )+ ")";
-                    i3++;
-                    Application.DoEvents();
-                    Thread.Sleep(300);
+                    dgvRun.Rows[0].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0, 0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
+                    for (int i2 = result.Count - 1; i2 >= 0; i2--)
+                    {
+                        dgvLab.Rows[result[i2].Coordenada[0, 0]].Cells[result[i2].Coordenada[0, 1]].Style.BackColor = cor;
+                        dgvRun.Rows.Add();
+                        dgvRun.Rows[i3].Cells[0].Value = "Passando em (" + (result[i2].Coordenada[0, 0] - 1) + "," + (result[i2].Coordenada[0, 1] - 1) + ")";
+                        i3++;
+                        Application.DoEvents();
+                        Thread.Sleep(300);
+                    }
+                    dgvRun.Rows.Add();
+                    dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
+
                 }
-                dgvRun.Rows.Add();
-                dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
             }
+            else
+            {
+                dgvRun.Rows.Add();
+                dgvRun.Rows[0].Cells[0].Value = "O labirinto não tem solução!";
+            }
+            button1.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             for (int i = 0; i < dgvLab.Columns.Count; i++)
             {
                 try
@@ -76,18 +87,19 @@ namespace maze_backtracking
 
             if (dlgAbrirArquivo.ShowDialog() == DialogResult.OK)
             {
+                button2.Enabled = true;
                 string nomeArq = dlgAbrirArquivo.FileName;
                 LeitorDeArquivo leitor = new LeitorDeArquivo();
                 try
                 {
                     labirinto = new Labirinto(leitor.ReadFileAsCharTable(nomeArq));
-                    for(int i = 0; i<labirinto.Matriz.GetLength(1); i++)
+                    for (int i = 0; i < labirinto.Matriz.GetLength(1); i++)
                     {
                         dgvLab.Columns.Add("Column" + i, "");
                         dgvLab.Columns[i].Width = 20;
                     }
 
-                    for(int i = 0; i < labirinto.Matriz.GetLength(0); i++)
+                    for (int i = 0; i < labirinto.Matriz.GetLength(0); i++)
                     {
                         dgvLab.Rows.Add();
                         for (int j = 0; j < labirinto.Matriz.GetLength(1); j++)
@@ -132,6 +144,11 @@ namespace maze_backtracking
                     MessageBox.Show("Ops! Algum erro inesperado aconteceu. Tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

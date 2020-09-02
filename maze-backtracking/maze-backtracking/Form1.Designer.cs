@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -127,7 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -138,14 +140,14 @@
             this.Column1});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 14F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRun.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRun.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dgvRun.Location = new System.Drawing.Point(730, 0);
+            this.dgvRun.Location = new System.Drawing.Point(710, 0);
             this.dgvRun.MultiSelect = false;
             this.dgvRun.Name = "dgvRun";
             this.dgvRun.ReadOnly = true;
@@ -158,12 +160,13 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRun.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRun.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dgvRun.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRun.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvRun.Size = new System.Drawing.Size(231, 466);
+            this.dgvRun.Size = new System.Drawing.Size(251, 466);
             this.dgvRun.TabIndex = 1;
             // 
             // dgvLab
@@ -172,13 +175,14 @@
             this.dgvLab.AllowUserToDeleteRows = false;
             this.dgvLab.AllowUserToResizeColumns = false;
             this.dgvLab.AllowUserToResizeRows = false;
-            this.dgvLab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvLab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvLab.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLab.Location = new System.Drawing.Point(0, 0);
             this.dgvLab.Name = "dgvLab";
             this.dgvLab.RowHeadersWidth = 51;
-            this.dgvLab.Size = new System.Drawing.Size(689, 466);
+            this.dgvLab.Size = new System.Drawing.Size(676, 466);
             this.dgvLab.TabIndex = 0;
             // 
             // dlgAbrirArquivo
@@ -194,7 +198,7 @@
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 230;
+            this.Column1.Width = 250;
             // 
             // Form1
             // 
@@ -208,10 +212,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1033, 682);
             this.Name = "Form1";
-            this.Text = "Maze Solver";
+            this.Text = " Maze Solver";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRun)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLab)).EndInit();
