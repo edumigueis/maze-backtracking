@@ -15,8 +15,6 @@ namespace maze_backtracking.Classes
 
         private bool todosOsCaminhosEncontrados = false;
 
-        private bool EstaNoFim { get; set; }
-
         private int[,] Direcoes { get; } = { { 0, -1, 0 },
                                             { 1, -1, 1 },
                                             { 2, 0, 1 },
@@ -46,7 +44,7 @@ namespace maze_backtracking.Classes
             int atualJ = 0;
             int atualI = 0;
             bool moveuSe = false;
-            
+
             for (int d = 0; d < Direcoes.GetLength(0); d++)
             {
                 moveuSe = false;
@@ -58,9 +56,9 @@ namespace maze_backtracking.Classes
                     novoI = atualI + Direcoes[d, 1];
                     novoJ = atualJ + Direcoes[d, 2];
                 }
-                else 
+                else
                 {
-                    novoI = Inicio[0,0] + Direcoes[d, 1];
+                    novoI = Inicio[0, 0] + Direcoes[d, 1];
                     novoJ = Inicio[0, 1] + Direcoes[d, 2];
                 }
 
@@ -83,12 +81,18 @@ namespace maze_backtracking.Classes
                 }
                 else
                     if (Matriz[novoI, novoJ].ToString().Equals("S"))
-                    {
-                        SalvarCaminho(novoI, novoJ);
-                        break;
-                    }
+                {
+                    SalvarCaminho(novoI, novoJ);
+                    break;
+                }
                 else if (d == 7 && moveuSe == false)
                 {
+                    if (Movimentos.EstaVazia)
+                    {
+                        todosOsCaminhosEncontrados = true;
+                        return;
+                    }
+
                     Movimento atual = Movimentos.Desempilhar();
 
                     if (!Movimentos.EstaVazia)
@@ -98,20 +102,43 @@ namespace maze_backtracking.Classes
                         atualJ = ant.Coordenada[0, 1];
                         d = -1;
                     }
-                    else
-                        todosOsCaminhosEncontrados = true;
+
                 }
-             }
+            }
         }
 
         private void FecharCaminhoEncontrado()
         {
+            if (Movimentos.EstaVazia)
+            {
+                todosOsCaminhosEncontrados = true;
+                return;
+            }
+
             int i = Movimentos.OTopo().Coordenada[0, 0];
             int j = Movimentos.OTopo().Coordenada[0, 1];
+            List<int[,]> lista = new List<int[,]>();
+
+            for (int i2 = 0; i2 < Matriz.GetLength(0); i2++)
+            {
+                for (int j2 = 0; j2 < Matriz.GetLength(1); j2++)
+                {
+                    if (Matriz[i2, j2].ToString().Equals("O"))
+                    {
+                        int[,] arr = new int[,] { { i2, j2 } };
+                        lista.Add(arr);
+                    }
+                }
+            }
 
             Matriz = (char[,])MatrizOriginal.Clone();
+            Matriz[i, j] = 'O';
 
-            Matriz[i,j] = 'O';
+            for (int i3 = 0; i3 < lista.Count; i3++)
+            {
+                Matriz[lista[i3][0, 0], lista[i3][0, 1]] = 'O';
+            }
+
         }
 
         public List<PilhaLista<Movimento>> GetResultado()
@@ -148,7 +175,7 @@ namespace maze_backtracking.Classes
                 for (int j = 0; j < Matriz.GetLength(1); j++)
                 {
                     if (Matriz[i, j].ToString().ToUpper().Equals("I"))
-                        Inicio = new int[,] { { i , j } };
+                        Inicio = new int[,] { { i, j } };
                 }
             }
         }

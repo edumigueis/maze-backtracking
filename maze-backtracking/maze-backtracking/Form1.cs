@@ -38,19 +38,18 @@ namespace maze_backtracking
             button2.Enabled = false;
             button1.Enabled = false;
             dgvRun.Rows.Clear();
-            dgvRun.Refresh();
-            Color cor = new Color();
-            cor = Color.FromArgb(10, 50, 200);
+            dgvRun.Refresh();    
             var lista = labirinto.GetResultado();
             int i3 = 1;
             if (lista.Count != 0)
             {
                 for (int i = 0; i < lista.Count; i++)
                 {
+                    var cor = CalcularCor();
                     var result = lista[i].ToList();
 
                     dgvRun.Rows.Add();
-                    dgvRun.Rows[0].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0, 0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
+                    dgvRun.Rows[dgvRun.Rows.Count - 1].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0, 0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
                     for (int i2 = result.Count - 1; i2 >= 0; i2--)
                     {
                         dgvLab.Rows[result[i2].Coordenada[0, 0]].Cells[result[i2].Coordenada[0, 1]].Style.BackColor = cor;
@@ -58,11 +57,11 @@ namespace maze_backtracking
                         dgvRun.Rows[i3].Cells[0].Value = "Passando em (" + (result[i2].Coordenada[0, 0] - 1) + "," + (result[i2].Coordenada[0, 1] - 1) + ")";
                         i3++;
                         Application.DoEvents();
-                        Thread.Sleep(300);
+                        Thread.Sleep(200);
                     }
                     dgvRun.Rows.Add();
                     dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
-
+                    i3++;
                 }
             }
             else
@@ -144,6 +143,13 @@ namespace maze_backtracking
                     MessageBox.Show("Ops! Algum erro inesperado aconteceu. Tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private Color CalcularCor()
+        {
+            var rnd = new Random();
+            Color randomColor = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
+            return randomColor;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

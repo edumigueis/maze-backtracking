@@ -35,7 +35,7 @@ namespace maze_backtracking.Classes
         public Dado OTopo()
         {
             if (EstaVazia)
-                throw new Exception("pilha vazia!");
+                throw new Exception("pilha vazia de cu!");
 
             return base.Primeiro.Info;
         }
