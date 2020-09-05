@@ -35,6 +35,8 @@ namespace maze_backtracking
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Thread thread = new Thread(() => ThreadStatus.ExibirStatus(dgvRun));
+            thread.Start();
             button2.Enabled = false;
             button1.Enabled = false;
             dgvRun.Rows.Clear();
@@ -50,6 +52,12 @@ namespace maze_backtracking
 
                     dgvRun.Rows.Add();
                     dgvRun.Rows[dgvRun.Rows.Count - 1].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0, 0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
+                    Application.DoEvents();
+                    if (i != 0)
+                    {
+                        dgvRun.Rows.Add();
+                        i3++;
+                    }
                     for (int i2 = result.Count - 1; i2 >= 0; i2--)
                     {
                         dgvLab.Rows[result[i2].Coordenada[0, 0]].Cells[result[i2].Coordenada[0, 1]].Style.BackColor = cor;
@@ -57,12 +65,16 @@ namespace maze_backtracking
                         dgvRun.Rows[i3].Cells[0].Value = "Passando em (" + (result[i2].Coordenada[0, 0] - 1) + "," + (result[i2].Coordenada[0, 1] - 1) + ")";
                         i3++;
                         Application.DoEvents();
-                        Thread.Sleep(200);
+
+                        Thread.Sleep(trackBar1.Maximum - trackBar1.Value);
+                        dgvRun.FirstDisplayedScrollingRowIndex = dgvRun.Rows.Count - 1;
                     }
                     dgvRun.Rows.Add();
                     dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
                     i3++;
                 }
+
+                label4.Text = "Caminhos encontrados: " + lista.Count;
             }
             else
             {
@@ -70,11 +82,20 @@ namespace maze_backtracking
                 dgvRun.Rows[0].Cells[0].Value = "O labirinto não tem solução!";
             }
             button1.Enabled = true;
+            thread.Abort();
+            dgvRun.Columns[0].HeaderText = "Status (OK)";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgvLab.Columns.Count; i++)
+
+            if (dlgAbrirArquivo.ShowDialog() == DialogResult.OK)
+            {
+                button2.Enabled = true;
+                string nomeArq = dlgAbrirArquivo.FileName;
+                dgvRun.Rows.Clear();
+                dgvRun.Refresh();
+                            for (int i = 0; i < dgvLab.Columns.Count; i++)
             {
                 try
                 {
@@ -83,11 +104,6 @@ namespace maze_backtracking
                 }
                 catch (Exception) { }
             }
-
-            if (dlgAbrirArquivo.ShowDialog() == DialogResult.OK)
-            {
-                button2.Enabled = true;
-                string nomeArq = dlgAbrirArquivo.FileName;
                 LeitorDeArquivo leitor = new LeitorDeArquivo();
                 try
                 {
@@ -155,6 +171,11 @@ namespace maze_backtracking
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
