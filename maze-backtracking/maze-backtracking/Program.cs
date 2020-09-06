@@ -19,7 +19,7 @@ namespace maze_backtracking
             }
             catch (Exception)
             {
-                MessageBox.Show("Algum erro inesperado aconteceu. Tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ops! Algum erro inesperado aconteceu. Tente novamente mais tarde.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

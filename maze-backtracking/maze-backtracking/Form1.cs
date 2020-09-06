@@ -35,6 +35,7 @@ namespace maze_backtracking
 
         private void button2_Click(object sender, EventArgs e)
         {
+            label4.Text = "Caminhos encontrados:";
             Thread thread = new Thread(() => ThreadStatus.ExibirStatus(dgvRun));
             thread.Start();
             button2.Enabled = false;
@@ -88,6 +89,7 @@ namespace maze_backtracking
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label4.Text = "Caminhos encontrados:";
 
             if (dlgAbrirArquivo.ShowDialog() == DialogResult.OK)
             {
@@ -95,7 +97,7 @@ namespace maze_backtracking
                 string nomeArq = dlgAbrirArquivo.FileName;
                 dgvRun.Rows.Clear();
                 dgvRun.Refresh();
-                            for (int i = 0; i < dgvLab.Columns.Count; i++)
+            for (int i = 0; i < dgvLab.Columns.Count; i++)
             {
                 try
                 {
