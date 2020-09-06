@@ -49,14 +49,12 @@ namespace maze_backtracking
                 {
                     var cor = CalcularCor();
                     var result = lista[i].ToList();
-
                     dgvRun.Rows.Add();
                     dgvRun.Rows[dgvRun.Rows.Count - 1].Cells[0].Value = "Saindo de (" + (labirinto.Inicio[0, 0] - 1) + "," + (labirinto.Inicio[0, 1] - 1) + ")";
                     Application.DoEvents();
                     if (i != 0)
                     {
-                        dgvRun.Rows.Add();
-                        i3++;
+                        i3 = i3+2;
                     }
                     for (int i2 = result.Count - 1; i2 >= 0; i2--)
                     {
@@ -71,7 +69,7 @@ namespace maze_backtracking
                     }
                     dgvRun.Rows.Add();
                     dgvRun.Rows[i3].Cells[0].Value = "Chegando em (" + (labirinto.Fim[0, 0] - 1) + "," + (labirinto.Fim[0, 1] - 1) + ")";
-                    i3++;
+                    Application.DoEvents();
                 }
 
                 label4.Text = "Caminhos encontrados: " + lista.Count;
