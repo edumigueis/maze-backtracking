@@ -202,7 +202,7 @@
             // dlgAbrirArquivo
             // 
             this.dlgAbrirArquivo.FileName = "Text File";
-            this.dlgAbrirArquivo.Filter = "Text|*.txt|All|*.*";
+            this.dlgAbrirArquivo.Filter = "Text|*.txt";
             // 
             // trackBar1
             // 
