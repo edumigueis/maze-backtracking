@@ -2,22 +2,13 @@
 
 > A maze solver algorithm using backtracking.
 
-One to two paragraph statement about your product and what it does.
+This project was made for Data Structures II subject. It presentes a text file reader, that reads a maze composed of # characters(wall), blank spaces (path), S(end) and I(start). Then, the algorithm is capable of finding paths that solve the maze, or detecting a maze with no solution. This project uses backtracking with stacking as its main algorithm. 
 
 ![](header.png)
 
 ## Installation
 
 You can download project dependencies. Then, you can run it in and IDE or text editor. The text files to test the project are inside the tests folder.
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
 
 ## Meta
 
