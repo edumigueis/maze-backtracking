@@ -65,7 +65,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 39);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Abrir Arquivo";
+            this.button1.Text = "Open File";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -84,7 +84,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 39);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Iniciar";
+            this.button2.Text = "Start";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -95,7 +95,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(26, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 35);
+            this.label1.Size = new System.Drawing.Size(152, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Maze Solver";
             // 
@@ -106,9 +106,10 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(27, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(378, 24);
+            this.label2.Size = new System.Drawing.Size(195, 19);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Escolha um arquivo e clique em iniciar.";
+            this.label2.Text = "Pick a file and click start.";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
@@ -211,7 +212,7 @@
             this.trackBar1.Location = new System.Drawing.Point(813, 28);
             this.trackBar1.Maximum = 200;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(180, 56);
+            this.trackBar1.Size = new System.Drawing.Size(180, 45);
             this.trackBar1.SmallChange = 0;
             this.trackBar1.TabIndex = 5;
             this.trackBar1.TickFrequency = 50;
@@ -224,7 +225,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label3.Location = new System.Drawing.Point(740, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 22);
+            this.label3.Size = new System.Drawing.Size(58, 18);
             this.label3.TabIndex = 6;
             this.label3.Text = "Speed:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -237,16 +238,16 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label4.Location = new System.Drawing.Point(43, 582);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(234, 22);
+            this.label4.Size = new System.Drawing.Size(97, 18);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Caminhos encontrados:";
+            this.label4.Text = "Paths found:";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1015, 635);
+            this.ClientSize = new System.Drawing.Size(1017, 643);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.trackBar1);
