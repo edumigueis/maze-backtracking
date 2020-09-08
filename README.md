@@ -2,7 +2,7 @@
 
 > A maze solver algorithm using backtracking.
 
-This project was made for Data Structures II subject. It presentes a text file reader, that reads a maze composed of # characters(wall), blank spaces (path), S(end) and I(start). Then, the algorithm is capable of finding paths that solve the maze, or detecting a maze with no solution. This project uses backtracking with stacking as its main algorithm. 
+This project was made for Data Structures II subject. It presentes a text file reader, that reads a maze composed of # characters(wall), blank spaces (path), an S character(end) and an I character(start). Then, the algorithm is capable of finding paths that solve the maze, or detecting a maze with no solution. This project uses backtracking with stacking as its main algorithm. 
 
 ![](header.png)
 
